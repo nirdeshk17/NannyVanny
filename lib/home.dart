@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'package:nannyvanny/dataholders.dart';
+import 'package:nannyvanny/drawer.dart';
+
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -29,9 +32,10 @@ class _homeState extends State<home> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
+                    onTap: ()=>ZoomDrawer.of(context)!.toggle(),
                     child: Icon(
                       Icons.dehaze,
-                      color: Colors.black,
+                      color:Color(0xFFe36da7)
                     ),
                   ),
                   SizedBox(
@@ -84,7 +88,7 @@ class _homeState extends State<home> {
                               "krystle Mathew",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.pink,
+                                  color:Color(0xFFe36da7),
                                   fontSize: 18),
                             ),
                           ],
@@ -120,9 +124,9 @@ class _homeState extends State<home> {
                                       "Nanny And BabySitting Services",
                                       maxLines: 2,
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.bold,
-                                          color: Color(0xff060a8d)),
+                                          color: Color(0xff282e70)),
                                     )),
                               ],
                             ),
@@ -136,7 +140,8 @@ class _homeState extends State<home> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Color(0xff060a8d),
+                                      color: Color(0xff262f72
+                                      ),
                                       borderRadius: BorderRadius.all(
                                           Radius.elliptical(20, 20))),
                                   child: Row(
@@ -145,9 +150,9 @@ class _homeState extends State<home> {
                                         width: 20,
                                       ),
                                       Text(
-                                        "Book",
+                                        "Book Now",
                                         style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
+                                            fontSize: 14, color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 20,
@@ -185,9 +190,9 @@ class _homeState extends State<home> {
                     child: Text(
                       "Your Current Booking",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff060a8d)),
+                          color:Color(0xff282e70)),
                     ),
                   ),
                 ],
@@ -201,6 +206,9 @@ class _homeState extends State<home> {
                   child: Container(
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -213,7 +221,7 @@ class _homeState extends State<home> {
                                   currentBooking["package_label"]!=null? currentBooking["package_label"]:"",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.pink,
+                                      color: Color(0xffe295be),
                                       fontSize: 17),
                                 ),
                               ],
@@ -222,7 +230,7 @@ class _homeState extends State<home> {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.pink,
+                                      color: Color(0xffe36da7),
                                       borderRadius: BorderRadius.all(
                                           Radius.elliptical(20, 20))),
                                   child: Row(
@@ -233,7 +241,7 @@ class _homeState extends State<home> {
                                       Text(
                                         "Start",
                                         style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
+                                            fontSize: 14, color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 20,
@@ -286,13 +294,13 @@ class _homeState extends State<home> {
                                   ),
                                   Icon(
                                     Icons.calendar_today_outlined,
-                                    color: Colors.pink,
-                                    size: 20,
+                                    color: Color(0xffcb7ea3),
+                                    size: 15,
                                   ),
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Text(currentBooking["from_date"]),
+                                  Text(currentBooking["from_date"],style: TextStyle(color: Color(0xff5d5d5d),),),
                                 ],
                               ),
                             ),
@@ -302,13 +310,13 @@ class _homeState extends State<home> {
                                 children: [
                                   Icon(
                                     Icons.calendar_today_outlined,
-                                    color: Colors.pink,
-                                    size: 20,
+                                    color: Color(0xffcb7ea3),
+                                    size: 15,
                                   ),
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Text(currentBooking["to_date"]),
+                                  Text(currentBooking["to_date"],style: TextStyle(color: Color(0xff5d5d5d),)),
                                 ],
                               ),
                             ),
@@ -329,13 +337,13 @@ class _homeState extends State<home> {
                                   ),
                                   Icon(
                                     Icons.timer,
-                                    color: Colors.pink,
-                                    size: 20,
+                                    color: Color(0xffcb7ea3),
+                                    size: 15,
                                   ),
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Text(currentBooking["from_time"]),
+                                  Text(currentBooking["from_time"],style: TextStyle(color: Color(0xff5d5d5d),)),
                                 ],
                               ),
                             ),
@@ -345,13 +353,13 @@ class _homeState extends State<home> {
                                 children: [
                                   Icon(
                                     Icons.timer,
-                                    color: Colors.pink,
-                                    size: 20,
+                                    color: Color(0xffcb7ea3),
+                                    size: 15,
                                   ),
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Text(currentBooking["to_time"]),
+                                  Text(currentBooking["to_time"],style: TextStyle(color: Color(0xff5d5d5d),)),
                                 ],
                               ),
                             ),
@@ -370,7 +378,7 @@ class _homeState extends State<home> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Color(0xff060a8d),
+                                      color: Color(0xff262f72),
                                       borderRadius: BorderRadius.all(
                                           Radius.elliptical(20, 20))),
                                   child: Row(
@@ -382,7 +390,7 @@ class _homeState extends State<home> {
                                       Text(
                                         "Rate Us",
                                         style: TextStyle(
-                                            fontSize: 12, color: Colors.white),
+                                            fontSize: 13, color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -395,11 +403,11 @@ class _homeState extends State<home> {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 20,
+                                  width: 5,
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Color(0xff060a8d),
+                                      color: Color(0xff262f72),
                                       borderRadius: BorderRadius.all(
                                           Radius.elliptical(20, 20))),
                                   child: Row(
@@ -411,7 +419,7 @@ class _homeState extends State<home> {
                                       Text(
                                         "Geolocation",
                                         style: TextStyle(
-                                            fontSize: 12, color: Colors.white),
+                                            fontSize: 13, color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -424,11 +432,11 @@ class _homeState extends State<home> {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 20,
+                                  width: 5,
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Color(0xff060a8d),
+                                      color: Color(0xff262f72),
                                       borderRadius: BorderRadius.all(
                                           Radius.elliptical(20, 20))),
                                   child: Row(
@@ -440,7 +448,7 @@ class _homeState extends State<home> {
                                       Text(
                                         "Survillence",
                                         style: TextStyle(
-                                            fontSize: 12, color: Colors.white),
+                                            fontSize: 13, color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -475,9 +483,9 @@ class _homeState extends State<home> {
                     child: Text(
                       "Packages",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff060a8d)),
+                          color: Color(0xff262f72),),
                     ),
                   ),
                 ],
@@ -485,21 +493,31 @@ class _homeState extends State<home> {
               ListView.builder(physics:NeverScrollableScrollPhysics(),itemCount:packages.length,shrinkWrap: true,itemBuilder: (BuildContext,index){
                 var clr;
                 var calenderIcon;
+                var bookNowClr;
+                var descriptionClr;
                if(packages[index]["id"]==1){
                  clr=Color(0xFFf5b5cf);
                  calenderIcon=Container( child:Image(image: AssetImage("assets/images/one.png")),width: 30,height: 30,);
+                 bookNowClr=Color(0xFFe36da7);
+                 descriptionClr=Color(0xFF664f59);
                }
                 if(packages[index]["id"]==2){
                   clr=Color(0xffb5d4f5);
                   calenderIcon=Container( child:Image(image: AssetImage("assets/images/three.png")),width: 30,height: 30,);
+                  bookNowClr=Color(0xFF0098d1);
+                  descriptionClr=Color(0xFF664f59);
                 }
                 if(packages[index]["id"]==3){
                   clr=Color(0xFFf5b5cf);
                   calenderIcon=Container( child:Image(image: AssetImage("assets/images/five.png")),width: 30,height: 30,);
+                  bookNowClr=Color(0xFFe36da7);
+                  descriptionClr=Color(0xFF664f59);
                 }
                 if(packages[index]["id"]==4){
                   clr=Color(0xffb5d4f5);
                   calenderIcon=Container( child:Image(image: AssetImage("assets/images/seven.png")),width: 30,height: 30,);
+                  bookNowClr=Color(0xFF0098d1);
+                  descriptionClr=Colors.white;
                 }
                 return Column(
                   children: [
@@ -532,7 +550,7 @@ class _homeState extends State<home> {
                                     Container(
 
                                       decoration: BoxDecoration(
-                                          color: Color(0xff060a8d),
+                                          color: bookNowClr,
                                           borderRadius: BorderRadius.all(
                                               Radius.elliptical(20, 20))),
                                       child: Row(
@@ -541,9 +559,9 @@ class _homeState extends State<home> {
                                             width: 10,
                                           ),
                                           Text(
-                                            "Book",
+                                            "Book Now",
                                             style: TextStyle(
-                                                fontSize: 12, color: Colors.white),
+                                                fontSize: 14, color: Colors.white),
                                           ),
                                           SizedBox(
                                             width: 10,
@@ -570,12 +588,12 @@ class _homeState extends State<home> {
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    Text(packages[index]["package_name"],style: TextStyle(fontWeight: FontWeight.bold,fontSize:16 ,color: Color(0xff060a8d) ),)
+                                    Text(packages[index]["package_name"],style: TextStyle(fontWeight: FontWeight.bold,fontSize:16 ,color: Color(0xff262f72) ),)
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Text("\u{20B9}${packages[index]["price"]}",style: TextStyle(fontWeight: FontWeight.bold,fontSize:16 ,color: Color(0xff060a8d))),
+                                    Text("\u{20B9}${packages[index]["price"]}",style: TextStyle(fontWeight: FontWeight.bold,fontSize:16 ,color:Color(0xff262f72))),
                                     SizedBox(
                                       width: 20,
                                     ),
@@ -596,6 +614,7 @@ class _homeState extends State<home> {
                                   child: Text(
                                     packages[index]["description"],
                                     maxLines: 2,
+                                    style: TextStyle(color: descriptionClr,fontSize: 13),
                                   ),
                                 ),
                               ],
@@ -632,14 +651,16 @@ class _homeState extends State<home> {
     // });
   }
 
-  getData() async {
-    var uri = Uri.parse("http://cgprojects.in/flutter/");
-    print(uri);
-    var data = await http.get(uri);
-    var response = jsonDecode(data.body);
-    setState(() {
-      currentBooking = response["current_bookings"];
-      packages = response["packages"];
-    });
-  }
+  // getData() async {
+  //   var uri = Uri.parse("http://cgprojects.in/flutter/");
+  //   print(uri);
+  //   var data = await http.get(uri);
+  //   var response = jsonDecode(data.body);
+  //   var cb=response["current_bookings"];
+  //   var p=response["packages"];
+  //   setState(() {
+  //     currentBooking = cb;
+  //     packages = p;
+  //   });
+  // }
 }

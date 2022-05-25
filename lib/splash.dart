@@ -3,8 +3,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:nannyvanny/dataholders.dart';
+import 'package:nannyvanny/drawer.dart';
+
 import 'package:nannyvanny/home.dart';
 import 'package:http/http.dart' as http;
+
 
 
 class splash extends StatefulWidget {
@@ -25,7 +28,7 @@ class _splashState extends State<splash> {
   @override
   void initState() {
     Timer(Duration(seconds: 3),()=> getData().then((sucess){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>home()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>drawer()));
     }));
   }
   getData() async {
